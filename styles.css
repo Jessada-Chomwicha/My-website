@@ -348,120 +348,72 @@ body {
 } 
 
 
-* {
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Roboto", sans-serif;
-    background: linear-gradient(120deg, #121520, #1e1e2e, #282a36, #1e272e);
-    background-size: 400% 400%;
-    animation: gradient-animation 12s ease infinite;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    color: #fff;
-    cursor: none;
-    position: relative;
-    perspective: 1000px;
-}
-
-/* Enhanced Mouse Particle Effect */
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: 
-        radial-gradient(circle, rgba(22, 212, 31, 0.7) 1px, transparent 1px),
-        radial-gradient(circle, rgba(15, 188, 249, 0.05) 2px, transparent 2px);
-    background-size: 50px 50px, 100px 100px;
-    opacity: 0.3;
-    z-index: -1;
-    animation: particle-move 20s linear infinite;
-}
-
-@keyframes particle-move {
-    0% { background-position: 0 0, 0 0; }
-    100% { background-position: 50px 50px, 100px 100px; }
-}
-
-/* Advanced Cursor Glow Effect */
-.cursor {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background: rgba(15, 188, 249, 0.9);
-    border-radius: 50%;
-    pointer-events: none;
-    mix-blend-mode: screen;
-    transform: translate(-50%, -50%);
-    box-shadow: 
-        0 0 10px rgba(15, 188, 249, 0.5),
-        0 0 20px rgba(15, 188, 249, 0.3),
-        0 0 40px rgba(15, 188, 249, 0.1);
-    animation: cursor-pulse 1.5s infinite alternate;
-}
-
-@keyframes cursor-pulse {
-    0% { 
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.8;
-    }
-    100% { 
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 1;
-    }
-}
-
-body {
-    position: relative;
-}
-.wrapper {
-    display: flex;
-    gap: 20px;
-    perspective: 3000;
-    flex-wrap: wrap; /* เพิ่มการปรับแบบตอบสนองสำหรับมือถือ */
-    justify-content: center; /* จัดให้การ์ดอยู่กึ่งกลาง */
-}
-
-.card {
-    width: 360px;
-    height: 530px;
-    transform-style: preserve-3d;
-    transition: transform 0.8s ease-in-out;
-    cursor: pointer;
-    border: 1px solid #44475a;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), -5px -5px 15px rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    background: #282a36;
-}
-
-/* รองรับการแสดงผลบนมือถือ */
-@media (max-width: 768px) {
-    .card {
-        width: 90%;
-        height: 400px;
-    }
-
+/* สำหรับ iPhone 12, iPhone 13, iPhone 14, iPhone 15 (6.1 นิ้ว) */
+@media only screen and (max-width: 800px) {
     .wrapper {
-        flex-direction: column; /* ทำให้การ์ดเรียงเป็นแนวตั้ง */
+        flex-direction: column;
         align-items: center;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+        margin: 0 auto;
+        transform: none;
+        transition: none;
     }
 
     .card-info h2 {
-        font-size: 1.5rem; /* ขนาดตัวอักษรเล็กลง */
+        font-size: 1.6rem;
     }
 
     .card-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .card-description {
+        font-size: 0.95rem;
+    }
+
+    .card-button {
         font-size: 1rem;
+        padding: 12px 24px;
+    }
+
+    .cursor {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* สำหรับ iPhone 12 Pro Max, iPhone 13 Pro Max, iPhone 14 Plus, iPhone 15 Plus (6.7 นิ้ว) */
+@media only screen and (max-width: 1000px) {
+    .card {
+        width: 90%;
+        height: 460px;
+    }
+}
+
+/* สำหรับ iPhone 12 Mini, iPhone 13 Mini (5.4 นิ้ว) */
+@media only screen and (max-width: 620px) {
+    .wrapper {
+        padding: 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .card-info h2 {
+        font-size: 1.4rem;
+    }
+
+    .card-subtitle {
+        font-size: 1.1rem;
     }
 
     .card-description {
@@ -469,7 +421,7 @@ body {
     }
 
     .card-button {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         padding: 10px 20px;
     }
 }
