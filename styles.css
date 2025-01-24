@@ -1,0 +1,351 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(120deg, #121520, #1e1e2e, #282a36, #1e272e);
+    background-size: 400% 400%;
+    animation: gradient-animation 12s ease infinite;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: #fff;
+    cursor: none;
+    position: relative;
+    perspective: 1000px;
+}
+
+/* Enhanced Mouse Particle Effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: 
+        radial-gradient(circle, rgba(22, 212, 31, 0.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(15, 188, 249, 0.05) 2px, transparent 2px);
+    background-size: 50px 50px, 100px 100px;
+    opacity: 0.3;
+    z-index: -1;
+    animation: particle-move 20s linear infinite;
+}
+
+@keyframes particle-move {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 50px 50px, 100px 100px; }
+}
+
+/* Advanced Cursor Glow Effect */
+.cursor {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: rgba(15, 188, 249, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 0 10px rgba(15, 188, 249, 0.5),
+        0 0 20px rgba(15, 188, 249, 0.3),
+        0 0 40px rgba(15, 188, 249, 0.1);
+    animation: cursor-pulse 1.5s infinite alternate;
+}
+
+@keyframes cursor-pulse {
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* การจัดการตำแหน่งของเมาส์ */
+body {
+    position: relative;
+}
+.wrapper {
+    display: flex; /* การ์ดเรียงแนวนอน */
+    gap: 20px; /* ระยะห่างระหว่างการ์ด */
+    perspective: 3000;
+}
+
+.card {
+    width: 360px;
+    height: 530px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    cursor: pointer;
+    border: 1px solid #44475a; /* ขอบการ์ดให้เด่นขึ้น */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), -5px -5px 15px rgba(255, 255, 255, 0.1); /* เงาเพิ่มความเด่น */
+    border-radius: 15px;
+    background: #282a36; /* สีพื้นหลังในกรณีที่รูปไม่โหลด */
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.front-page,
+.back-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.front-page {
+    background-image: url(portrait.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+    box-shadow: inset 0 -50px 100px rgba(0, 0, 0, 0.5); /* เงาภายใน */
+}
+
+.card-info {
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    color: #0fbcf9;
+}
+
+.back-page {
+    background-color: #1e272e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* เพิ่มความลึก */
+}
+
+.card-content {
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+}
+
+.card-content h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.card-button {
+    background-color: #0fbcf9;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-button:hover {
+    background-color: transparent;
+    color: #0fbcf9;
+    border: 1px solid #0fbcf9;
+}
+
+/* Additional card styles for second and third cards */
+.front-page1,
+.back-page1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.front-page1 {
+    background-image: url(portrait2.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+    box-shadow: inset 0 -50px 100px rgba(0, 0, 0, 0.5);
+}
+
+.card-info1 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.card-title1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-subtitle1 {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    color: #0fbcf9;
+}
+
+.back-page1 {
+    background-color: #1e272e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-content1 {
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+}
+
+.card-content1 h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.card-description1 {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.card-button1 {
+    background-color: #0fbcf9;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-button1:hover {
+    background-color: transparent;
+    color: #0fbcf9;
+    border: 1px solid #0fbcf9;
+}
+
+.front-page2,
+.back-page2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.front-page2 {
+    background-image: url(portrait3.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+    box-shadow: inset 0 -50px 100px rgba(0, 0, 0, 0.5);
+}
+
+.card-info2 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.card-title2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-subtitle2 {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    color: #0fbcf9;
+}
+
+.back-page2 {
+    background-color: #1e272e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-content2 {
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+}
+
+.card-content2 h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.card-description2 {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.card-button2 {
+    background-color: #0fbcf9;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-button2:hover {
+    background-color: transparent;
+    color: #0fbcf9;
+    border: 1px solid #0fbcf9;
+} 
+
+
+
