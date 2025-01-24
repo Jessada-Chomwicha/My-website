@@ -348,4 +348,95 @@ body {
 } 
 
 
+/* Existing CSS ... */
+
+/* Add Media Query for Mobile */
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        display: block;
+        height: auto;
+        overflow: auto;
+    }
+
+    .wrapper {
+        display: block; /* Stack the cards vertically */
+        align-items: center;
+        gap: 15px; /* Reduce the gap between cards */
+    }
+
+    .card {
+        width: 100%; /* Make each card take full width on mobile */
+        height: auto; /* Adjust height to auto */
+        margin: 0 auto; /* Center the cards */
+    }
+
+    .card-title,
+    .card-subtitle,
+    .card-title1,
+    .card-subtitle1,
+    .card-title2,
+    .card-subtitle2 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .card-description,
+    .card-description1,
+    .card-description2 {
+        font-size: 0.9rem; /* Adjust description text for better readability */
+    }
+
+    .card-button,
+    .card-button1,
+    .card-button2 {
+        padding: 10px 20px; /* Smaller button padding on mobile */
+        font-size: 0.9rem; /* Adjust button font size */
+    }
+
+    .card-content,
+    .card-content1,
+    .card-content2 {
+        padding: 15px;
+        max-width: 90%; /* Allow the content to be more flexible on small screens */
+    }
+
+    .card-info,
+    .card-info1,
+    .card-info2 {
+        font-size: 1.2rem; /* Adjust text size of info */
+        padding: 10px;
+    }
+
+    .front-page,
+    .front-page1,
+    .front-page2,
+    .back-page,
+    .back-page1,
+    .back-page2 {
+        padding: 15px; /* Reduce padding inside the cards */
+    }
+
+    .cursor {
+        width: 20px; /* Smaller cursor on mobile */
+        height: 20px; 
+    }
+
+    /* Ensure that the particles still look good on mobile */
+    body::before {
+        background-size: 40px 40px, 80px 80px; /* Adjust particle size */
+    }
+}
+
+/* Optionally, for very small screens (e.g., under 480px), you can add further adjustments */
+@media (max-width: 480px) {
+    .card-title,
+    .card-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .card-description {
+        font-size: 0.8rem;
+    }
+}
 
