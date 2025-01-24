@@ -348,95 +348,129 @@ body {
 } 
 
 
-/* Existing CSS ... */
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Add Media Query for Mobile */
-@media (max-width: 768px) {
-    body {
-        margin: 0;
-        padding: 0;
-        display: block;
-        height: auto;
-        overflow: auto;
+body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(120deg, #121520, #1e1e2e, #282a36, #1e272e);
+    background-size: 400% 400%;
+    animation: gradient-animation 12s ease infinite;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: #fff;
+    cursor: none;
+    position: relative;
+    perspective: 1000px;
+}
+
+/* Enhanced Mouse Particle Effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: 
+        radial-gradient(circle, rgba(22, 212, 31, 0.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(15, 188, 249, 0.05) 2px, transparent 2px);
+    background-size: 50px 50px, 100px 100px;
+    opacity: 0.3;
+    z-index: -1;
+    animation: particle-move 20s linear infinite;
+}
+
+@keyframes particle-move {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 50px 50px, 100px 100px; }
+}
+
+/* Advanced Cursor Glow Effect */
+.cursor {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: rgba(15, 188, 249, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 0 10px rgba(15, 188, 249, 0.5),
+        0 0 20px rgba(15, 188, 249, 0.3),
+        0 0 40px rgba(15, 188, 249, 0.1);
+    animation: cursor-pulse 1.5s infinite alternate;
+}
+
+@keyframes cursor-pulse {
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
     }
-
-    .wrapper {
-        display: block; /* Stack the cards vertically */
-        align-items: center;
-        gap: 15px; /* Reduce the gap between cards */
-    }
-
-    .card {
-        width: 100%; /* Make each card take full width on mobile */
-        height: auto; /* Adjust height to auto */
-        margin: 0 auto; /* Center the cards */
-    }
-
-    .card-title,
-    .card-subtitle,
-    .card-title1,
-    .card-subtitle1,
-    .card-title2,
-    .card-subtitle2 {
-        font-size: 1.5rem; /* Adjust font size for smaller screens */
-    }
-
-    .card-description,
-    .card-description1,
-    .card-description2 {
-        font-size: 0.9rem; /* Adjust description text for better readability */
-    }
-
-    .card-button,
-    .card-button1,
-    .card-button2 {
-        padding: 10px 20px; /* Smaller button padding on mobile */
-        font-size: 0.9rem; /* Adjust button font size */
-    }
-
-    .card-content,
-    .card-content1,
-    .card-content2 {
-        padding: 15px;
-        max-width: 90%; /* Allow the content to be more flexible on small screens */
-    }
-
-    .card-info,
-    .card-info1,
-    .card-info2 {
-        font-size: 1.2rem; /* Adjust text size of info */
-        padding: 10px;
-    }
-
-    .front-page,
-    .front-page1,
-    .front-page2,
-    .back-page,
-    .back-page1,
-    .back-page2 {
-        padding: 15px; /* Reduce padding inside the cards */
-    }
-
-    .cursor {
-        width: 20px; /* Smaller cursor on mobile */
-        height: 20px; 
-    }
-
-    /* Ensure that the particles still look good on mobile */
-    body::before {
-        background-size: 40px 40px, 80px 80px; /* Adjust particle size */
+    100% { 
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
     }
 }
 
-/* Optionally, for very small screens (e.g., under 480px), you can add further adjustments */
-@media (max-width: 480px) {
-    .card-title,
+body {
+    position: relative;
+}
+.wrapper {
+    display: flex;
+    gap: 20px;
+    perspective: 3000;
+    flex-wrap: wrap; /* เพิ่มการปรับแบบตอบสนองสำหรับมือถือ */
+    justify-content: center; /* จัดให้การ์ดอยู่กึ่งกลาง */
+}
+
+.card {
+    width: 360px;
+    height: 530px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    cursor: pointer;
+    border: 1px solid #44475a;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    background: #282a36;
+}
+
+/* รองรับการแสดงผลบนมือถือ */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        height: 400px;
+    }
+
+    .wrapper {
+        flex-direction: column; /* ทำให้การ์ดเรียงเป็นแนวตั้ง */
+        align-items: center;
+    }
+
+    .card-info h2 {
+        font-size: 1.5rem; /* ขนาดตัวอักษรเล็กลง */
+    }
+
     .card-subtitle {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .card-description {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .card-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
     }
 }
 
